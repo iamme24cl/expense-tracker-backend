@@ -5,7 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Account.destroy_all
-Transaction.destroy_all
+# Account.destroy_all
+# Transaction.destroy_all
+
+
+
+account = Account.create(name: "My Account")
+
+transactions_data = [
+  { description: "paycheck", amount: 1500, kind: "income" },
+  { description: "paycheck", amount: 1500, kind: "income" },
+  { description: "Camera", amount: 500, kind: "expense" },
+  { description: "dine out", amount: 80, kind: "expense" },
+  { description: "gas", amount: 60, kind: "expense" },
+  { description: "car loan payment", amount: 350, kind: "expense"}
+]
+
+transactions_data.each do |t|
+  account.transactions.build(description: t[:description], amount: t[:amount], kind: t[:kind])
+  account.update_balance(t)
+  account.save
+end
+
+
+
+
+
 
 
