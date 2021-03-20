@@ -18,8 +18,18 @@ class Api::V1::TransactionsController < ApplicationController
       @account.save
       render json: TransactionSerializer.new(transaction), status: :accepted
     else
-      render json: {errors: transaction.errors.full_messages}, status: :unprocessible_entity
+      render json: { errors: transaction.errors.full_messages }, status: :unprocessible_entity
     end
+  end
+
+  def update
+  end
+
+  def destroy
+    @account.update_balance_and_delete(@transaction);
+    @transaction.destroy
+
+    render json: { message: "Transaction Deleted." }    
   end
 
   private
