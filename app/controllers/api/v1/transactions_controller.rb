@@ -1,6 +1,6 @@
 class Api::V1::TransactionsController < ApplicationController
   before_action :find_transaction, only: [:update, :destroy]
-  before_action :find_account, only: [:index, :create]
+  before_action :find_account, only: [:index, :create, :update, :destroy]
 
   def index
     if @account
@@ -23,11 +23,20 @@ class Api::V1::TransactionsController < ApplicationController
   end
 
   def update
+    if @transaction.update(transaction_params)
+      @transaction.account.update_balance_upon_edit
+      @transaction.account.save
+      
+      render json: TransactionSerializer.new(@transaction), status: :accepted
+    else
+      render json: { errors: @transaction.errors.full_messages }, status: :unprocessible_entity
+    end
   end
 
   def destroy
-    @account.update_balance_and_delete(@transaction);
+    @account.update_balance_upon_delete(@transaction);
     @transaction.destroy
+    @account.save
 
     render json: { message: "Transaction Deleted." }    
   end
