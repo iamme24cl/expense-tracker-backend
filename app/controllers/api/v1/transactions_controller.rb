@@ -1,5 +1,5 @@
 class Api::V1::TransactionsController < ApplicationController
-  before_action :find_transaction, only: [:update, :destroy]
+  before_action :find_transaction, only: [:show, :update, :destroy]
   before_action :find_account, only: [:index, :create, :update, :destroy]
 
   def index
@@ -9,6 +9,10 @@ class Api::V1::TransactionsController < ApplicationController
 
       render json: TransactionSerializer.new(transactions)
     end
+  end
+
+  def show
+    render json: TransactionSerializer.new(@transaction)
   end
 
   def create
