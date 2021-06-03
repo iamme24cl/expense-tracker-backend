@@ -11,9 +11,9 @@ class Api::V1::TransactionsController < ApplicationController
     end
   end
 
-  def show
-    render json: TransactionSerializer.new(@transaction)
-  end
+  # def show
+  #   render json: TransactionSerializer.new(@transaction)
+  # end
 
   def create
     transaction = @account.transactions.build(transaction_params)
