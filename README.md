@@ -1,7 +1,7 @@
 # README
 A simple expense and income tracking API, built with Ruby on Rails.
 
-* Ruby version '2.6.1'
+* Ruby version '3.0.2'
 
 
 * Database creation
