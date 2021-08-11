@@ -10,7 +10,7 @@
 
 
 
-account = Account.create(name: "My Account")
+account = Account.create(name: "demo", password: "demo")
 
 transactions_data = [
   { description: "paycheck", amount: 1500, kind: "income" },

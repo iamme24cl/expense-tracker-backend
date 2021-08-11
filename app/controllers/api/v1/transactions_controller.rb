@@ -42,7 +42,7 @@ class Api::V1::TransactionsController < ApplicationController
     @transaction.destroy
     @account.save
 
-    render json: { message: "Transaction Deleted." }    
+    render json: @account   
   end
 
   private
