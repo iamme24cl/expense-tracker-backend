@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/login' => 'sessions#create'
       # resources :transactions, only: [:show]
-      resources :accounts, only: [:index, :show] do
+      resources :accounts, only: [:index, :show, :create] do
         resources :transactions, only: [:index, :create, :update, :destroy]
       end
     end
