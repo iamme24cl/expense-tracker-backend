@@ -16,7 +16,7 @@ class Api::V1::AccountsController < ApplicationController
     if account.save
       render json: account, status: :accepted
     else
-      render json: {errors: account.errors.full_messages}, status: :unprocessible_entity
+      render json: {errors: account.errors.full_messages}
     end
   end
 
