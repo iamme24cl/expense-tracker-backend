@@ -1,4 +1,5 @@
 class Api::V1::AccountsController < ApplicationController
+  before_action :find_account, only: [:show]
 
   def index
     accounts = Account.all
@@ -11,12 +12,11 @@ class Api::V1::AccountsController < ApplicationController
   end
 
   def create
-    # byebug
     account = Account.new(account_params)
     if account.save
       render json: account, status: :accepted
     else
-      render json: {errors: account.errors.full_messages}#, status: :unprocessible_entity
+      render json: {errors: account.errors.full_messages}, status: :unprocessible_entity
     end
   end
 
