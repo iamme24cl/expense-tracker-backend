@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      post '/login' => 'sessions#create'
+      post '/login' => 'sessions#login'
       # resources :transactions, only: [:show]
       resources :accounts, only: [:index, :show, :create] do
         resources :transactions, only: [:index, :create, :update, :destroy]
