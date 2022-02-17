@@ -14,8 +14,6 @@ Usage:
 If running on local machine run the folowing command to start the server on port 3000, (http://localhost:3000):
   rails s
 
-Demo Video ![Walkthrough video](https://youtu.be/id_dLnYas-U)
-
 
 Contributing Bug reports and pull requests are welcome on GitHub at https://github.com/iamme24cl/expense-tracker-backend. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the code of conduct.
 
